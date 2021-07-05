@@ -7,5 +7,5 @@
 
 ## 이은성
 
-<img width="400" src="https://user-images.githubusercontent.com/50590192/124443065-54b80880-ddb8-11eb-9dce-3afbb60a3b61.png/>
+<img width="400" src="https://user-images.githubusercontent.com/50590192/124443065-54b80880-ddb8-11eb-9dce-3afbb60a3b61.png">
 
