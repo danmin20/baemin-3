@@ -3,7 +3,6 @@ const path = require("path");
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
-const flash = require("connect-flash");
 // require("dotenv").config();
 
 const indexRouter = require("./routes/index");
@@ -35,7 +34,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser(10));
 app.use(sessionMiddleware);
-app.use(flash());
 
 app.use("/", indexRouter);
 app.use("/auth", authRouter);

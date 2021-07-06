@@ -1,30 +1,23 @@
 const express = require("express");
 const bcrypt = require("bcrypt");
-// const { isLoggedIn, isNotLoggedIn } = require("./middlewares");
 const { User } = require("../models");
 
 const router = express.Router();
 
-const isNotLoggedIn = (req, res, next) => {
-  if (!req.isAuthenticated()) {
-    next();
-  } else {
-    res.redirect("/");
-  }
-};
-
-router.post("/signup", isNotLoggedIn, async (req, res, next) => {
+router.post("/signup", async (req, res, next) => {
   const { id, nickname, password, birth } = req.body;
   try {
     const exUser = await User.findOne({ where: { id } });
     const exNick = await User.findOne({ where: { nickname } });
     if (exUser) {
-      req.flash("signupError", "이미 가입된 이메일입니다.");
-      return res.redirect("/signup");
+      return res.status(401).json({
+        message: "existing user",
+      });
     }
     if (exNick) {
-      req.flash("signupError", "이미 존재하는 닉네임입니다.");
-      return res.redirect("/signup");
+      return res.status(401).json({
+        message: "existing nickname",
+      });
     }
     const hash = await bcrypt.hash(password, 12);
     await User.create({
@@ -33,31 +26,41 @@ router.post("/signup", isNotLoggedIn, async (req, res, next) => {
       password: hash,
       birth,
     });
-    return res.redirect("/");
+    return res.status(200).json({
+      message: "success",
+    });
   } catch (error) {
     console.error(error);
     return next(error);
   }
 });
 
-router.post("/login", isNotLoggedIn, async (req, res, next) => {
+router.post("/login", async (req, res, next) => {
   const { id, password } = req.body;
-
-  const user = await User.findOne({ where: { id } });
-  const hash = await bcrypt.hash(password, 12);
-
-  if (user && user.password === hash) {
-    req.flash("loginError", info.message);
-    return res.redirect("/");
-  }
-
-  return req.login(user, (loginError) => {
-    if (loginError) {
-      console.error(loginError);
-      return next(loginError);
+  try {
+    // 유저 확인
+    const user = await User.findOne({ where: { id } });
+    if (!user) {
+      return res.status(401).json({
+        message: "user is not exist",
+      });
     }
-    return res.redirect("/");
-  });
+    // 패스워드 확인
+    const isPW = await bcrypt.compare(password, user.password);
+    if (!isPW) {
+      return res.status(401).json({
+        message: "wrong password",
+      });
+    }
+
+    req.session.id = user.id;
+    return res.status(200).json({
+      message: "success",
+    });
+  } catch (error) {
+    console.error(error);
+    return next(error);
+  }
 });
 
 // router.get("/logout", isLoggedIn, (req, res) => {
