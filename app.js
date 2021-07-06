@@ -32,6 +32,7 @@ app.set("port", 3000);
 
 app.use(morgan("dev"));
 app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "assets")));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
