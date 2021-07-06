@@ -1,5 +1,9 @@
 # 1주차 팀3
 
+## 꿀팁
+- [By 이정민](/tips/danmin20.md)
+- [By 이은성](/tips/이은성_tips.md)
+
 ## 이정민
 
 <img width="400" src="https://user-images.githubusercontent.com/50590192/124442594-dd827480-ddb7-11eb-8c00-47ad22b158e9.png"/>
