@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  div.content(style="height: 100%;")
+    header 
+      div(style='display:flex; justify-content: space-between;')
+        a(style='') <
+        div(style='') 회원가입
+        input#complete-button(type="button" style='' value="완료" disabled)
+    form#join-form(action='/' method='post' style="height: 100%; position: relative")
+      div.input-group
+        label(for="email") 이메일
+        div(style='display:flex')
+          div(style='position:relative; flex:1;')
+            input#email.text-input(type="email" name="email")
+            img#email-del(src="/delete.svg" style="position: absolute; right: 3rem; bottom: 0.5rem;")
+            img.check-ok(src="/notok.svg")
+          input#email-check-btn(type="button" value="중복확인")
+
+      div#auth-num-group(style="margin-top: 3rem;")
+  script(src='/signup.js')

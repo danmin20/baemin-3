@@ -57,14 +57,17 @@ label {
   font-size: 1.4rem;
   font-weight: 500;
 }
-.submit-btn:disabled{
-    background: lightgray;
+.submit-btn:disabled {
+  background: lightgray;
 }
-.link-btn{
-    color: #23b9b4;
+.link-btn {
+  color: #23b9b4;
 }
 .input-group {
   margin-top: 1rem;
+}
+#join-form .input-group {
+  position: relative;
 }
 .text-input {
   width: 100%;
@@ -151,4 +154,36 @@ label {
   padding: 1.56rem;
   font-size: 1.3rem;
   border: 1px solid #eee;
+}
+
+#complete-button {
+  background-color: white;
+  border: 0px solid white;
+}
+
+#complete-button:disabled {
+  background-color: white;
+  border: 0px solid white;
+  color: grey;
+}
+
+#email-check-btn {
+  background-color: white;
+  border: 0.1rem solid lightgray;
+  padding: 0.5rem 0.7rem;
+  border-radius: 3px;
+  margin-left: 1.5rem;
+  background: #fff;
+  color: #000;
+}
+#email-check-btn:disabled {
+  background-color: white;
+  border: 0.1rem solid lightgray;
+  color: lightgray;
+}
+
+.check-ok {
+  position: absolute;
+  right: 0.5rem;
+  bottom: 0.5rem;
 }
