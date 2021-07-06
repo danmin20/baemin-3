@@ -47,8 +47,11 @@ label {
   font-size: 1.4rem;
   font-weight: 500;
 }
-.link-btn {
-  color: #23b9b4;
+.submit-btn:disabled{
+    background: lightgray;
+}
+.link-btn{
+    color: #23b9b4;
 }
 .input-group {
   margin-top: 1rem;

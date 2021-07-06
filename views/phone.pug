@@ -2,10 +2,13 @@ extends layout
 
 block content
   div.content(style="height: 100%")
-    .title 어서오세요
-    .title 약관동의가 필요해요
     form#join-form(action='/phone' method='get' style="height: 100%; position: relative")
-      .input-group
+      div.input-group(style="position: relative")
         label(for="phone-number") 휴대전화
         input#phone-number.text-input(type="tel" name="phone-number")
-      button#auth-num-btn.submit-btn(style="background: #fff; border: 0.1rem solid lightgray; color: #000; margin-top: 3rem;") 인증번호 받기
+        img#phone-number-del(src="/delete.svg" style="position: absolute; right: 3rem; bottom: 0.5rem;")
+        img#phone-number-ok(src="/notok.svg" style="position: absolute; right: 0.5rem; bottom: 0.5rem;")
+      button#auth-num-btn.submit-btn(type="button" style="background: #fff; border: 0.1rem solid lightgray; color: #000; margin-top: 3rem;") 인증번호 받기
+
+      div#auth-num-group(style="margin-top: 3rem;")
+  script(src='/phone.js')
