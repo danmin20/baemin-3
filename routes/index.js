@@ -1,22 +1,37 @@
 const express = require("express");
-
-// const { isLoggedIn, isNotLoggedIn } = require("./middlewares");
+const { User } = require("../models");
 
 const router = express.Router();
 
-// router.use((req, res, next) => {
-//   // 모든 pug 템플릿에 사용자 정보를 변수로 집어넣음.
-//   res.locals.user = req.user;
-//   next();
-// });
+router.use(async (req, res, next) => {
+  // 모든 pug 템플릿에 사용자 정보를 변수로 집어넣음.
+  if (req.session?.userId) {
+    const id = req.session.userId;
+    console.log(req.session.userId);
+    const user = await User.findOne({ where: { id } });
+    if (user) {
+      req.locals = {
+        user: user,
+      };
+    }
+  }
+  next();
+});
 
 // 초기화면
 router.get("/", async (req, res, next) => {
   try {
-    res.render("main", {
-      title: "main",
-      // loginError: req.flash("loginError"),
-    });
+    if (req.locals.user) {
+      console.log(req.locals.user);
+      res.render("main", {
+        title: "main",
+        user: req.locals.user,
+      });
+    } else {
+      res.render("main", {
+        title: "main",
+      });
+    }
   } catch (error) {
     console.error(error);
     next(error);
@@ -27,7 +42,6 @@ router.get("/", async (req, res, next) => {
 router.get("/login", (req, res) => {
   res.render("login", {
     title: "로그인",
-    // loginError: req.flash("loginError"),
   });
 });
 
@@ -35,7 +49,6 @@ router.get("/login", (req, res) => {
 router.get("/agree", (req, res) => {
   res.render("agree", {
     title: "회원가입",
-    // signupError: req.flash("signupError"),
   });
 });
 

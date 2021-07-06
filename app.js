@@ -3,24 +3,17 @@ const path = require("path");
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
+
 // require("dotenv").config();
 
 const indexRouter = require("./routes/index");
 const authRouter = require("./routes/auth");
 const { sequelize } = require("./models");
 
+const FileStore = require("session-file-store")(session);
+
 const app = express();
 sequelize.sync();
-
-const sessionMiddleware = session({
-  resave: false,
-  saveUninitialized: false,
-  secret: 10,
-  cookie: {
-    httpOnly: true,
-    secure: false,
-  },
-});
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
@@ -32,8 +25,21 @@ app.use(express.static(path.join(__dirname, "assets")));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser("asdf;lkajsdf;laksjdfa;slkdjf"));
+
 app.use(cookieParser(10));
-app.use(sessionMiddleware);
+app.use(
+  session({
+    resave: false,
+    saveUninitialized: false,
+    secret: "asdf;lkajsdf;laksjdfa;slkdjf",
+    cookie: {
+      httpOnly: true,
+      secure: false,
+    },
+    store: new FileStore(),
+  })
+);
 
 app.use("/", indexRouter);
 app.use("/auth", authRouter);
@@ -54,6 +60,3 @@ app.use((err, req, res, next) => {
 app.listen(app.get("port"), () => {
   console.log(app.get("port"), "번 포트에서 대기중");
 });
-
-// webSocket(server, app);
-// sse(server);
