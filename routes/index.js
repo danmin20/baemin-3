@@ -23,19 +23,26 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-// 회원가입
-router.get("/signup", (req, res) => {
-  res.render("signup", {
-    title: "회원가입",
-    // signupError: req.flash("signupError"),
-  });
-});
-
 // 로그인
 router.get("/login", (req, res) => {
   res.render("login", {
     title: "로그인",
     // loginError: req.flash("loginError"),
+  });
+});
+
+// 약관동의
+router.get("/agree", (req, res) => {
+  res.render("agree", {
+    title: "회원가입",
+    // signupError: req.flash("signupError"),
+  });
+});
+
+// 휴대번호
+router.get("/phone", (req, res) => {
+  res.render("phone", {
+    title: "휴대번호",
   });
 });
 
