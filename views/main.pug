@@ -1,4 +1,43 @@
 extends layout
 
 block content
-  div 초기화면
+  .content#main(style='padding: 0;')
+    header My배민
+    .main-img
+      div(style='font-size: 1.2rem; color: #444') 오호 이런 기능이!
+      div(style='font-size: 2rem; font-weight: bold; margin-top: 0.6rem;') 
+        | 배민 잘 쓰는 법 
+        br
+        | 알려드려요
+    ul
+      li#login-button
+        span(style='font-size: 2rem; margin-right: 0.5rem;') 👤
+        span(style='font-weight: 500; color: #aaa')  로그인해주세요
+    table(style='width: 100%; height: 130px; text-align:center; border-collapse: collapse; font-size: 1.3rem;') 
+      tr 
+        td 
+          div 
+          div 포인트
+        td 
+          div 쿠폰함
+        td 
+          div 선물함
+      tr 
+        td 
+          div 찜
+        td 
+          div 주문내역
+        td 
+          div 리뷰관리
+    .divider 
+    ul
+      li
+        span(style='font-size: 2rem; margin-right: 0.5rem;') 🌱
+        span(style='color: rgb(142, 193, 123); font-weight: 600;')  일회용품 덜 쓰기, 함께해요!
+    .divider 
+    ul
+      li 배민페이 등록
+      li 가족계정 관리
+      li 공지사항
+      li 배민커넥트 지원
+  script(src='/main.js')

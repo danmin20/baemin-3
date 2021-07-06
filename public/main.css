@@ -9,6 +9,14 @@ body {
   font-size: 10px;
 }
 
+header {
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 2rem 0;
+  width: 100%;
+  text-align: center;
+}
+
 form {
   width: 100%;
 }
@@ -16,8 +24,10 @@ input {
   border: 0 solid lightgray;
   border-bottom-width: 0.1rem;
   padding: 0.8rem 0;
-  padding: 0.8rem 0;
   margin: 0.3rem 0;
+}
+input:focus {
+  outline-style: none;
 }
 button {
   background: none;
@@ -106,4 +116,39 @@ label {
   border-radius: 4px;
   padding: 0.5rem;
   margin: 0.3rem 0;
+}
+
+.container {
+  width: 100%;
+}
+
+.main-img {
+  display: flex;
+  background-color: #f2f2f2;
+  width: 100vw;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1.5rem;
+}
+
+.divider {
+  width: 100%;
+  height: 5px;
+  background-color: #f6f6f6;
+}
+
+#main td {
+  border: 1px solid #eee;
+}
+
+#main ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  width: 100%;
+}
+#main li {
+  padding: 1.56rem;
+  font-size: 1.3rem;
+  border: 1px solid #eee;
 }
