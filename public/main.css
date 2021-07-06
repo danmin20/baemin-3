@@ -1,0 +1,45 @@
+* { box-sizing: border-box; }
+html, body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  font-size: 10px;
+}
+
+.content{
+    margin-top: 10rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 2.5rem;
+}
+
+form{
+    width: 100%;
+}
+input{
+    width: 100%;
+    border: 0 solid lightgray;
+    border-bottom-width: 0.1rem;
+    padding: 0.8rem 0;
+}
+button{
+    background: none;
+    border: none;
+}
+
+.sumit-btn{
+    background-color: #23b9b4;
+    width: 100%;
+    color: #fff;
+    padding: 0.8rem;
+    border-radius: 0.3rem;
+}
+.link-btn{
+    color: #23b9b4;
+}
+.input-group{
+    margin-top: 1rem;
+}
