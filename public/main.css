@@ -41,6 +41,9 @@ label{
     padding: 0.8rem;
     border-radius: 0.3rem;
 }
+.submit-btn:disabled{
+    background: lightgray;
+}
 .link-btn{
     color: #23b9b4;
 }
