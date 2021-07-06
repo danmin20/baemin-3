@@ -4,12 +4,12 @@ block content
   .content
     form#login-form(action='/')
       .input-group
-        input#login-id(type='text' name="id" placeholder="아이디 또는 이메일")
+        input#login-id.text-input(type='text' name="id" placeholder="아이디 또는 이메일")
         div#error-id.error
       .input-group
-        input#login-pw(type='password' placeholder="비밀번호" name='password')
+        input#login-pw.text-input(type='password' placeholder="비밀번호" name='password')
         div#error-pw.error
-      button#login-btn.sumit-btn(type='submit' style="margin-top: 2rem") 로그인
+      button#login-btn.submit-btn(type='submit' style="margin-top: 2rem") 로그인
 
     div(style='display: flex; width: 100%; margin-top: 5rem; font-size: 1.2rem; align-items: center; justify-content: center;')
       .text 혹시, 배달의민족이 처음이신가요?

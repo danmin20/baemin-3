@@ -1,13 +1,36 @@
 extends layout
 
 block content
-  .content
-    form#join-form(action='/auth/join' method='post')
-      .input-group
-        input#login-id(type='text' name="id" placeholder="아이디 또는 이메일" required autofocus)
-      .input-group
-        input#login-pw(type='password' placeholder="비밀번호" required name='password')
-      if joinError
-        .error-message= joinError
-      button#login-btn.btn(type='submit') 로그인
-  button#goto-signup-btn.btn 회원가입
+  div.content(style="height: 100%")
+    .title 어서오세요
+    .title 약관동의가 필요해요
+    form#join-form(action='/phone' method='get' style="height: 100%; position: relative")
+      div.check-group(style="margin-top: 3rem")
+        input#all-agree(type='checkbox' name="all-agree")
+        label(for="all-agree") 전체동의
+      .line
+      .check-group
+        input#first-agree(type='checkbox' name="all-agree")
+        label(for="first-agree") 배달의민족 이용약관 동의
+      .check-group
+        input#second-agree(type='checkbox' name="all-agree")
+        label(for="second-agree") 전자금융거래 이용약관 동의
+      .check-group
+        input#third-agree(type='checkbox' name="all-agree")
+        label(for="third-agree") 개인정보 수집이용 동의
+      .check-group
+        input#fourth-agree(type='checkbox' name="all-agree")
+        label(for="fourth-agree") 개인정보 제3자 제공 동의 (선택)
+      .check-group
+        input#fifth-agree(type='checkbox' name="all-agree")
+        label(for="fifth-agree") 마케팅 정보 메일, SMS 수신동의 (선택)
+
+      .line
+      .radio-box
+        input#first-radio(type="radio" name="age")
+        label(for="first-radio") 만 14세 이상입니다.
+      .radio-box
+        input#second-radio(type="radio" name="age")
+        label(for="second-radio") 만 14세 미만입니다.
+
+      button#next-btn.submit-btn(type='submit' style="position: absolute; bottom: 1rem") 다음으로

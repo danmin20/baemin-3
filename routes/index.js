@@ -24,8 +24,8 @@ router.get("/", async (req, res, next) => {
 });
 
 // 회원가입
-router.get("/signup", (req, res) => {
-  res.render("signup", {
+router.get("/agree", (req, res) => {
+  res.render("agree", {
     title: "회원가입",
     // signupError: req.flash("signupError"),
   });

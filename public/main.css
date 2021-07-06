@@ -6,21 +6,10 @@ html, body {
   font-size: 10px;
 }
 
-.content{
-    margin-top: 10rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-sizing: border-box;
-    width: 100%;
-    padding: 2.5rem;
-}
-
 form{
     width: 100%;
 }
 input{
-    width: 100%;
     border: 0 solid lightgray;
     border-bottom-width: 0.1rem;
     padding: 0.8rem 0;
@@ -29,8 +18,23 @@ button{
     background: none;
     border: none;
 }
+label{
+    margin-left: 0.5rem;
+    font-size: 1.2rem;
+}
 
-.sumit-btn{
+
+.content{
+    padding: 2.5rem;
+    padding-top: 10rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.submit-btn{
     background-color: #23b9b4;
     width: 100%;
     color: #fff;
@@ -42,4 +46,36 @@ button{
 }
 .input-group{
     margin-top: 1rem;
+}
+.text-input {
+    width: 100%;
+}
+.check-group{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.line {
+    width: 100%;
+    border: 0 solid lightgray;
+    border-bottom-width: 0.1rem;
+}
+
+.title{
+    width: 100%;
+    text-align: start;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.radio-box{
+    width: 100%;
+    background: lightgray;
+    padding: 1.5rem 1rem;
+    border-radius: 1rem;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
 }
