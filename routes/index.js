@@ -51,12 +51,18 @@ router.get("/agree", (req, res) => {
     title: "회원가입",
   });
 });
+router.post("/agree", (req, res) => {
+  res.redirect("phone");
+});
 
 // 휴대번호
 router.get("/phone", (req, res) => {
   res.render("phone", {
     title: "휴대번호",
   });
+});
+router.post("/phone", (req, res) => {
+  res.redirect("/signup");
 });
 
 module.exports = router;
