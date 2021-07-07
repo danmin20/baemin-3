@@ -21,7 +21,7 @@ router.use(async (req, res, next) => {
 // 초기화면
 router.get("/", async (req, res, next) => {
   try {
-    if (req.locals.user) {
+    if (req.locals?.user) {
       console.log(req.locals.user);
       res.render("main", {
         title: "main",
