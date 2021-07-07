@@ -12,8 +12,8 @@ const secondRadio = document.getElementById("second-radio");
 const submitBtn = document.getElementById("next-btn");
 
 const form = document.getElementById("agree-form");
+
 form.addEventListener("change", (e) => {
-  console.log(e.target.id);
   // 전체 선택
   if (e.target.id === "all-agree") {
     if (e.target.checked) {
@@ -29,6 +29,18 @@ form.addEventListener("change", (e) => {
       fourthAgree.checked = false;
       fifthAgree.checked = false;
     }
+  }
+
+  if (
+    !(
+      firstAgree.checked &&
+      secondAgree.checked &&
+      thirdAgree.checked &&
+      fourthAgree.checked &&
+      fifthAgree.checked
+    )
+  ) {
+    allAgree.checked = false;
   }
 
   // disabled 해제
