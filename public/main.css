@@ -38,6 +38,14 @@ label {
   font-size: 1.2rem;
 }
 
+.logout {
+  position: fixed;
+  right: 3rem;
+  top: 2.5rem;
+  font-size: 1.2rem;
+  color: #23b9b4;
+}
+
 .content {
   padding: 2.5rem;
   padding-top: 10rem;

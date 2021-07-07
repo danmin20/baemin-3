@@ -8,4 +8,10 @@ html
     link(rel='stylesheet' href='/main.css')
 
   body
-      block content
+    div#logout
+      if user
+        form(action="/auth/logout", method="get") 
+          button.logout 로그아웃
+    block content
+  script(src="/layout.js") 
+        

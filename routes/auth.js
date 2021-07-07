@@ -45,7 +45,7 @@ router.post("/login", async (req, res, next) => {
 
     req.session.userId = user.id;
     req.session.save((err) => {
-      console.log("asdf", err);
+      if (err) return next(err);
       res.redirect("/");
     });
     console.log(req.session);
@@ -55,9 +55,9 @@ router.post("/login", async (req, res, next) => {
   }
 });
 
-// router.get("/logout", (req, res) => {
-//   req.session.destroy();
-//   res.redirect("/");
-// });
+router.get("/logout", (req, res) => {
+  req.session.destroy();
+  res.redirect("/");
+});
 
 module.exports = router;
