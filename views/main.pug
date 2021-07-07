@@ -3,44 +3,53 @@ extends layout
 block content
   .content#main(style='padding: 0;')
     header My배민
-    .main-img
-      div(style='font-size: 1.2rem; color: #444') 오호 이런 기능이!
-      div(style='font-size: 2rem; font-weight: bold; margin-top: 0.6rem;') 
-        | 배민 잘 쓰는 법 
-        br
-        | 알려드려요
-    ul
-      li#login-button
-        span(style='font-size: 2rem; margin-right: 0.5rem;') 👤
+    img(src="/배너.png" style="width: 100%;")
+    .main-button#login-button
+      div(style="display: flex; align-items: center")
+        img(src="/프로필.png" style="width: 4rem;")
         if user
-          span(style='font-weight: 500; color: #aaa')  안녕하세요 #{user.nickname}님!
+          span 안녕하세요 #{user.nickname}님!
         else
-          span(style='font-weight: 500; color: #aaa')  로그인해주세요
-    table(style='width: 100%; height: 130px; text-align:center; border-collapse: collapse; font-size: 1.3rem;') 
-      tr 
-        td 
-          div 
-          div 포인트
-        td 
-          div 쿠폰함
-        td 
-          div 선물함
-      tr 
-        td 
-          div 찜
-        td 
-          div 주문내역
-        td 
-          div 리뷰관리
+          span 로그인해주세요
+      img(src="/화살표.png" style="width: 0.8rem")
+    .menus
+      .menu
+        img(src="/포인트.png")
+        span 포인트
+      .menu
+        img(src="/쿠폰함.png")
+        span 쿠폰함
+      .menu
+        img(src="/선물함.png")
+        span 선물함
+      .menu
+        img(src="/찜.png")
+        span 찜
+      .menu
+        img(src="/주문내역.png")
+        span 주문내역
+      .menu
+        img(src="/리뷰관리.png")
+        span 리뷰관리
     .divider 
-    ul
-      li
-        span(style='font-size: 2rem; margin-right: 0.5rem;') 🌱
-        span(style='color: rgb(142, 193, 123); font-weight: 600;')  일회용품 덜 쓰기, 함께해요!
+    .main-button(style="padding: 2rem 1.5rem")
+      div(style="display: flex; align-items: center")
+        img(src="/일회용품.png" style="width: 2.5rem")
+        div(style='color: rgb(142, 193, 123); font-weight: 600; margin-left: 0.5rem') 일회용품 덜 쓰기, 함께해요!
+      img(src="/화살표.png" style="width: 0.8rem")
     .divider 
-    ul
-      li 배민페이 등록
-      li 가족계정 관리
-      li 공지사항
-      li 배민커넥트 지원
+    .main-button(style="padding: 2rem 1.5rem")  
+      div 배민페이 등록
+        .sub 배민페이로 결제하면 최대 5.5% 배민포인트가 적립됩니다!
+      img(src="/화살표.png" style="width: 0.8rem")
+    .main-button(style="padding: 2rem 1.5rem") 
+      div 가족계정 관리
+        .sub 결제수단을 공유해 우리 가족의 끼니를 챙겨주세요.
+      img(src="/화살표.png" style="width: 0.8rem")
+    .main-button(style="padding: 2rem 1.5rem")  
+      div 공지사항
+      img(src="/화살표.png" style="width: 0.8rem")
+    .main-button(style="padding: 2rem 1.5rem")  
+      div 배민커넥트 지원
+      img(src="/화살표.png" style="width: 0.8rem")
   script(src='/main.js')
