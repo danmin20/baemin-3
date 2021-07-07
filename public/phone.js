@@ -16,13 +16,18 @@ const addListeners = () => {
   // 전화번호 입력
   const handlePhoneNumInput = (e) => {
     // - 자동입력
-    if (e.target.value.length === 3 || e.target.value.length === 8) {
-      e.target.value += "-";
-    }
-    if (e.target.value.length === 13) {
-      $check.src = "/ok.svg";
-    } else {
-      $check.src = "/notok.svg";
+    if (e.target.value.length === 4) {
+      if (e.target.value[e.target.value.length - 1] === "-") {
+        e.target.value = e.target.value.slice(0, 3);
+      } else {
+        e.target.value = e.target.value.slice(0, 3) + "-" + e.target.value.slice(3, 5);
+      }
+    } else if (e.target.value.length === 9) {
+      if (e.target.value[e.target.value.length - 1] === "-") {
+        e.target.value = e.target.value.slice(0, 8);
+      } else {
+        e.target.value = e.target.value.slice(0, 8) + "-" + e.target.value.slice(8, 10);
+      }
     }
   };
   $phoneNum.addEventListener("input", handlePhoneNumInput);
