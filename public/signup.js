@@ -128,13 +128,8 @@ const addListeners = () => {
     $email.value = "";
   };
 
-  const completeButtonHandler = () => {
-    location.href = "/";
-  };
-
   $emailCheckBtn.addEventListener("click", checkEmailDuplicated);
   $emailDelBtn.addEventListener("click", deleteEmailInput);
-  $completeBtn.addEventListener("click", completeButtonHandler);
 };
 
 const createInputGroup = (labelText, inputId, inputType, eventName, handler) => {
@@ -144,6 +139,7 @@ const createInputGroup = (labelText, inputId, inputType, eventName, handler) => 
   const input = document.createElement("input");
   input.className = "text-input";
   input.id = inputId;
+  input.name = inputId;
   input.type = inputType;
 
   const img = document.createElement("img");
@@ -165,13 +161,10 @@ const createInputGroup = (labelText, inputId, inputType, eventName, handler) => 
 };
 
 const isComplete = () => {
-  console.log(isValid.email && isValid.nickname && isValid.password && isValid.year);
-  console.log(isValid);
   return isValid.email && isValid.nickname && isValid.password && isValid.birth;
 };
 
 const activateNextButton = () => {
-  console.log("active");
   const $completeBtn = document.querySelector("#complete-button");
   $completeBtn.disabled = false;
 };

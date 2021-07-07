@@ -149,6 +149,8 @@ label {
   background-color: white;
   border: 0px solid white;
   color: #23b9b4;
+  position: relative;
+  top: 0;
 }
 
 #complete-button:disabled {
