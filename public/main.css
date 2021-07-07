@@ -1,4 +1,4 @@
-@import url('reset.css');
+@import url("reset.css");
 
 html,
 body {
@@ -60,14 +60,17 @@ label {
   font-size: 1.4rem;
   font-weight: 500;
 }
-.submit-btn:disabled{
+.submit-btn:disabled {
   background: #e2e2e2;
 }
-.link-btn{
+.link-btn {
   color: #23b9b4;
 }
 .input-group {
   margin-top: 1rem;
+}
+#join-form .input-group {
+  position: relative;
 }
 .text-input {
   width: 100%;
@@ -142,9 +145,46 @@ label {
   border: 1px solid #eee;
 }
 
+#complete-button {
+  background-color: white;
+  border: 0px solid white;
+}
+
+#complete-button:disabled {
+  background-color: white;
+  border: 0px solid white;
+  color: grey;
+}
+
+#email-check-btn {
+  background-color: white;
+  border: 0.1rem solid lightgray;
+  padding: 0.5rem 0.7rem;
+  border-radius: 3px;
+  margin-left: 1.5rem;
+  background: #fff;
+  color: #000;
+}
+#email-check-btn:disabled {
+  background-color: white;
+  border: 0.1rem solid lightgray;
+  color: lightgray;
+}
+
+.check-ok {
+  position: absolute;
+  right: 0.5rem;
+  bottom: 0.5rem;
+}
+
+.desc-text {
+  color: red;
+  font-size: 1.1rem;
+}
+
 /* radio button */
-input[type='radio'],
-input[type='radio'] {
+input[type="radio"],
+input[type="radio"] {
   width: 1.7rem;
   height: 1.7rem;
   margin-bottom: 0.3rem;
@@ -153,7 +193,7 @@ input[type='radio'] {
   background-color: #fff;
   border: 0.6rem solid #e2e2e2;
 }
-input[type='radio']:checked {
+input[type="radio"]:checked {
   border: 0.6rem solid #23b9b4;
 }
 .radio-box {
@@ -166,23 +206,23 @@ input[type='radio']:checked {
   display: flex;
   align-items: center;
 }
-.radio-box label{
+.radio-box label {
   width: 100%;
 }
 
 /* checkbox */
-input[type='checkbox'] {
+input[type="checkbox"] {
   appearance: none;
   background-color: #fff;
   border: 0.8rem solid #e2e2e2;
   margin-top: -0.05rem;
 }
-input[type='checkbox']:checked {
+input[type="checkbox"]:checked {
   appearance: none;
   background-color: #fff;
   border: 0.8rem solid #23b9b4;
 }
-.check{
+.check {
   width: 1rem;
   height: 1rem;
   position: absolute;
