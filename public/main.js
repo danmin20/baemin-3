@@ -1,9 +1,14 @@
 const init = () => {
-  const $loginButton = document.querySelector("#login-button");
-  const handleLogin = (e) => {
+  const $loginButton = document.getElementById("login-button");
+  const $logoutButton = document.getElementById("logout-button");
+  const handleLogin = () => {
     location.href = "/login";
   };
-  $loginButton.addEventListener("click", handleLogin);
+  const handleLogout = () => {
+    location.href = "/auth/logout";
+  };
+  if ($loginButton) $loginButton.addEventListener("click", handleLogin);
+  if ($logoutButton) $logoutButton.addEventListener("click", handleLogout);
 };
 
 init();
