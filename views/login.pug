@@ -1,6 +1,8 @@
 extends layout
 
 block content
+  header(style="position: fixed; top: 0; left: 0;")
+    img#close.header-btn(style="width: 1.5rem; height: 1.5rem;" src="/취소.png")
   .content(style='height: 100%; justify-content: space-between; margin:0;')
     div(style='display: flex; width: 100%; margin-top: 5rem; align-items: center; justify-content: center; flex-direction: column;')
       form#login-form(action='/auth/login', method="POST")
@@ -17,12 +19,18 @@ block content
         span |
         span 비밀번호 찾기
 
-    div(style='display: flex; width: 100%; align-items: center; justify-content: center; flex-direction: column;')
-      button.login-as-btn 페이스북으로 로그인
-      button.login-as-btn 네이버로 로그인
-      button.login-as-btn Apple로 로그인
+    div(style='display: flex; width: 100%; align-items: center; justify-content: center; flex-direction: column; margin-bottom: 1rem;')
+      button.login-as-btn 
+        img.logo(src="/페이스북.png")
+        span 페이스북으로 로그인
+      button.login-as-btn 
+        img.logo(src="/네이버.png")
+        span 네이버로 로그인
+      button.login-as-btn 
+        img.logo(src="/애플.png")
+        span Apple로 로그인
       div(style='display: flex; width: 100%; margin-top: 1.5rem; font-size: 1.2rem; align-items: center; justify-content: center;')
-        .text 혹시, 배달의민족이 처음이신가요?
+        span(style="color: #444") 혹시, 배달의민족이 처음이신가요?
         button#goto-signup.link-btn 회원가입
 
   script(src='/login.js')
