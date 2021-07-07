@@ -35,12 +35,12 @@ block content
 
       .line
       .radio-box
-        input#first-radio(type="radio" name="age-over")
+        input#first-radio(type="radio" name="age")
         label(for="first-radio") 만 14세 이상입니다.
       .radio-box
-        input#second-radio(type="radio" name="age-under")
+        input#second-radio(type="radio" name="age")
         label(for="second-radio") 만 14세 미만입니다.
 
-      button#next-btn.submit-btn(type='submit' style="position: absolute; bottom: 1rem") 다음으로
+      button#next-btn.submit-btn(type='submit' style="position: absolute; bottom: 1rem" disabled) 다음으로
 
   script(src='/agree.js')
