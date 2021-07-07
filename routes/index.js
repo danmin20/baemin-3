@@ -52,6 +52,7 @@ router.get("/agree", (req, res) => {
   });
 });
 router.post("/agree", (req, res) => {
+  console.log(req.body);
   res.redirect("phone");
 });
 
@@ -62,6 +63,7 @@ router.get("/phone", (req, res) => {
   });
 });
 router.post("/phone", (req, res) => {
+  console.log(req.body);
   res.redirect("/signup");
 });
 

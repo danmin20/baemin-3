@@ -83,7 +83,7 @@ const addListeners = () => {
   // 뒤로가기 버튼
   const $backBtn = document.getElementById("back");
   $backBtn.addEventListener("click", () => {
-    window.history.back();
+    location.href = "/agree";
   });
 };
 
