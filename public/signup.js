@@ -9,18 +9,24 @@ const addListeners = () => {
   const $email = document.querySelector("#email");
   const $emailDelBtn = document.querySelector("#email-del");
   const $emailCheckBtn = document.querySelector("#email-check-btn");
+  const $backBtn = document.querySelector(".header-btn");
   const $joinForm = document.querySelector("#join-form");
-  const $completeBtn = document.querySelector("#complete-button");
+
   // 메일 중복 확인 버튼
   const checkEmailDuplicated = (e) => {
+    const emailValidation = $email.value.match(
+      /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/gi
+    );
+    if (isValid.email || !emailValidation) return;
+
     const checkOK = $emailCheckBtn.previousElementSibling.querySelector(".check-ok");
     checkOK.src = "/ok.svg";
     isValid.email = true;
     if (isComplete()) activateNextButton();
 
-    $joinForm.appendChild(createInputGroup("닉네임", "nickname", "text", "change", handleNickname));
-    $joinForm.appendChild(createInputGroup("비밀번호", "password", "password", "change", handlePassword));
-    $joinForm.appendChild(createInputGroup("생년월일", "birth", "text", "keyup", handleBirth));
+    $joinForm.appendChild(createInputGroup("닉네임", "nickname", "text", "", "change", handleNickname));
+    $joinForm.appendChild(createInputGroup("비밀번호", "password", "password", "", "change", handlePassword));
+    $joinForm.appendChild(createInputGroup("생년월일", "birth", "text", "2000.01.01", "keyup", handleBirth));
   };
 
   // 닉네임 listener
@@ -43,10 +49,10 @@ const addListeners = () => {
     const patternSpecial = value.match(/~!@#$%^&*/);
 
     const $password = document.querySelector("#password");
-    const $descText = $password.parentNode.querySelector(".desc-text");
+    const $descText = $password.parentNode.querySelector(".error");
     const $checkOK = $password.parentNode.querySelector(".check-ok");
 
-    const isContiniousPwd = (target) => {
+    const isContinuousPwd = (target) => {
       const value = target.value;
       let diff1, diff2;
 
@@ -60,7 +66,7 @@ const addListeners = () => {
       return false;
     };
 
-    if (value.match(/(\w)\1\1/) || isContiniousPwd(target)) {
+    if (value.match(/(\w)\1\1/) || isContinuousPwd(target)) {
       $password.style.border = "0px solid red";
       $password.style["border-bottom-width"] = "0.1rem";
       $descText.innerText = "같은 숫자 혹은 연속된 숫자를 3개 이상 입력할 수 없습니다.";
@@ -108,7 +114,7 @@ const addListeners = () => {
       target.value = `${birth.year}.${birth.month}`;
 
     const $birth = document.querySelector("#birth");
-    const $descText = $birth.parentNode.querySelector(".desc-text");
+    const $descText = $birth.parentNode.querySelector(".error");
     const $checkOK = $birth.parentNode.querySelector(".check-ok");
     if (!validDate) {
       $birth.style.border = "0px solid red";
@@ -128,11 +134,16 @@ const addListeners = () => {
     $email.value = "";
   };
 
+  const handleBack = (e) => {
+    window.history.back();
+  };
+
   $emailCheckBtn.addEventListener("click", checkEmailDuplicated);
   $emailDelBtn.addEventListener("click", deleteEmailInput);
+  $backBtn.addEventListener("click", handleBack);
 };
 
-const createInputGroup = (labelText, inputId, inputType, eventName, handler) => {
+const createInputGroup = (labelText, inputId, inputType, placeholder, eventName, handler) => {
   const label = document.createElement("label");
   label.innerText = labelText;
 
@@ -141,13 +152,14 @@ const createInputGroup = (labelText, inputId, inputType, eventName, handler) => 
   input.id = inputId;
   input.name = inputId;
   input.type = inputType;
+  input.placeholder = placeholder;
 
   const img = document.createElement("img");
   img.className = "check-ok";
   img.src = "/notok.svg";
 
   const descText = document.createElement("div");
-  descText.className = "desc-text";
+  descText.className = "error";
 
   const inputGroup = document.createElement("div");
   inputGroup.className = "input-group";
