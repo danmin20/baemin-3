@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  header(style="position: fixed; top: 0; left: 0;") 회원가입
+    img#back.header-btn(style="width: 1.5rem; height: 1.5rem;" src="/뒤로가기.png")
+  div.content(style="height: 100%")
+    form#join-form(action='/phone' method='POST' style="height: 100%; position: relative")
+      div.input-group(style="position: relative")
+        label(for="phone-number") 휴대전화
+        input#phone-number.text-input(type="tel" name="phone-number")
+        img#phone-number-del(src="/지우기.png" style="width: 1.5rem; position: absolute; right: 3rem; bottom: 1rem;")
+        img#phone-number-ok(src="/notok.svg" style="width: 1.2rem; position: absolute; right: 0.5rem; bottom: 1.2rem;")
+      button#auth-num-btn.submit-btn(type="button" style="background: #fff; border: 0.1rem solid lightgray; color: #000; margin-top: 3rem;") 인증번호 받기
+
+      div#auth-num-group(style="margin-top: 3rem;")
+
+      button#next-btn.next-btn(type="submit" disabled) 다음
+  script(src='/phone.js')
