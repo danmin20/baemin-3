@@ -29,14 +29,14 @@ const addListeners = () => {
     }
     // 전체 선택 아니면
     if (
-      !(
-        $firstAgree.checked &&
-        $secondAgree.checked &&
-        $thirdAgree.checked &&
-        $fourthAgree.checked &&
-        $fifthAgree.checked
-      )
+      $firstAgree.checked &&
+      $secondAgree.checked &&
+      $thirdAgree.checked &&
+      $fourthAgree.checked &&
+      $fifthAgree.checked
     ) {
+      $allAgree.checked = true;
+    } else {
       $allAgree.checked = false;
     }
   };

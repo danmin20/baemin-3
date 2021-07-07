@@ -8,9 +8,5 @@ html
     link(rel='stylesheet' href='/main.css')
 
   body
-    div#logout
-      if user
-        form(action="/auth/logout", method="get") 
-          button.logout 로그아웃
     block content
         

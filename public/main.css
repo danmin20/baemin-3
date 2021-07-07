@@ -257,16 +257,16 @@ label {
 
 /* radio button */
 input[type="radio"] {
-  width: 1.7rem;
-  height: 1.7rem;
-  margin-bottom: 0.3rem;
+  width: 1.9rem;
+  height: 1.9rem;
+  margin-bottom: 0.5rem;
   border-radius: 50%;
   appearance: none;
   background-color: #fff;
-  border: 0.8rem solid #e2e2e2;
+  border: 0.6rem solid #e2e2e2;
 }
 input[type="radio"]:checked {
-  border: 0.8rem solid #23b9b4;
+  border: 0.6rem solid #23b9b4;
 }
 .radio-box {
   width: 100%;
@@ -280,6 +280,7 @@ input[type="radio"]:checked {
 }
 .radio-box label {
   width: 100%;
+  margin-left: -0.1rem;
 }
 
 /* checkbox */
