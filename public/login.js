@@ -1,27 +1,35 @@
-const id = document.getElementById("login-id");
-const pw = document.getElementById("login-pw");
-const loginBtn = document.getElementById("login-btn");
+const addListeners = () => {
+  // 로그인 폼
+  const loginForm = document.getElementById("login-form");
+  const handleSubmit = (e) => {
+    const id = document.getElementById("login-id");
+    const pw = document.getElementById("login-pw");
 
-const errorId = document.getElementById("error-id");
-const errorPw = document.getElementById("error-pw");
+    const errorId = document.getElementById("error-id");
+    const errorPw = document.getElementById("error-pw");
 
-const loginForm = document.getElementById("login-form");
+    if (id.value === "") {
+      e.preventDefault();
+      errorId.textContent = "아이디 또는 이메일을 입력하세요";
+    }
+    if (pw.value === "") {
+      e.preventDefault();
+      errorPw.textContent = "비밀번호를 입력하세요";
+    }
+  };
+  loginForm.addEventListener("submit", handleSubmit);
 
-const handleSubmit = (e) => {
-  //   console.log(id.value === "", pw.value);
-  if (id.value === "") {
-    e.preventDefault();
-    errorId.textContent = "아이디 또는 이메일을 입력하세요";
-  }
-  if (pw.value === "") {
-    e.preventDefault();
-    errorPw.textContent = "비밀번호를 입력하세요";
-  }
+  // 회원가입 이동
+  const gotoSignup = document.getElementById("goto-signup");
+  gotoSignup.addEventListener("click", () => {
+    location.href = "/agree";
+  });
+
+  // 닫기 버튼
+  const $closeBtn = document.getElementById("close");
+  $closeBtn.addEventListener("click", () => {
+    location.href = "/";
+  });
 };
 
-loginForm.addEventListener("submit", handleSubmit);
-
-const gotoSignup = document.getElementById("goto-signup");
-gotoSignup.addEventListener("click", () => {
-  window.open("/agree", "_parent");
-});
+addListeners();

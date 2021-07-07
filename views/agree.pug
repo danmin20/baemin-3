@@ -1,6 +1,8 @@
 extends layout
 
 block content
+  header(style="position: fixed; top: 0; left: 0;") 회원가입
+    img#close.header-btn(style="width: 1.5rem; height: 1.5rem;" src="/취소.png")
   div.content(style="height: 100%")
     .title 어서오세요
     .title 약관동의가 필요해요
@@ -39,6 +41,6 @@ block content
         input#second-radio(type="radio" name="age-under")
         label(for="second-radio") 만 14세 미만입니다.
 
-      button#next-btn.submit-btn(type='submit' style="position: absolute; bottom: 1rem" disabled) 다음으로
+      button#next-btn.submit-btn(type='submit' style="position: absolute; bottom: 1rem") 다음으로
 
   script(src='/agree.js')
