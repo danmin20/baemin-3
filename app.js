@@ -3,8 +3,7 @@ const path = require("path");
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
-
-// require("dotenv").config();
+require("dotenv").config();
 
 const indexRouter = require("./routes/index");
 const authRouter = require("./routes/auth");
@@ -25,14 +24,13 @@ app.use(express.static(path.join(__dirname, "assets")));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser("asdf;lkajsdf;laksjdfa;slkdjf"));
+app.use(cookieParser(process.env.COOKIE_SECRET));
 
-app.use(cookieParser(10));
 app.use(
   session({
     resave: false,
     saveUninitialized: false,
-    secret: "asdf;lkajsdf;laksjdfa;slkdjf",
+    secret: process.env.COOKIE_SECRET,
     cookie: {
       httpOnly: true,
       secure: false,
