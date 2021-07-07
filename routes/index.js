@@ -65,4 +65,11 @@ router.post("/phone", (req, res) => {
   res.redirect("/signup");
 });
 
+// 회원가입
+router.get("/signup", (req, res) => {
+  res.render("signup", {
+    title: "회원가입",
+  });
+});
+
 module.exports = router;
