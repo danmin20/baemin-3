@@ -148,6 +148,7 @@ label {
 #complete-button {
   background-color: white;
   border: 0px solid white;
+  color: #23b9b4;
 }
 
 #complete-button:disabled {
@@ -183,7 +184,6 @@ label {
 }
 
 /* radio button */
-input[type="radio"],
 input[type="radio"] {
   width: 1.7rem;
   height: 1.7rem;
