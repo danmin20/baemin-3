@@ -13,9 +13,28 @@ const addListeners = () => {
   const $backBtn = document.querySelector(".header-btn");
   const $joinForm = document.querySelector("#join-form");
 
+  const handleEmailInput = ({ target }) => {
+    checkEmail();
+  };
+
   // 메일 중복 확인 버튼
   const checkEmailDuplicated = (e) => {
+    const emailValidation = checkEmail();
+
+    if (isComplete()) activateNextButton();
+    else deactivateNextButton();
+
+    if (!isEmailBtnPushed && emailValidation) {
+      $joinForm.appendChild(createInputGroup("닉네임", "nickname", "text", "", "change", handleNickname));
+      $joinForm.appendChild(createInputGroup("비밀번호", "password", "password", "", "change", handlePassword));
+      $joinForm.appendChild(createInputGroup("생년월일", "birth", "text", "2000.01.01", "keyup", handleBirth));
+      isEmailBtnPushed = true;
+    }
+  };
+
+  const checkEmail = () => {
     const $checkOK = $emailCheckBtn.previousElementSibling.querySelector(".check-ok");
+    const $error = $email.parentNode.querySelector(".error");
     const emailValidation = $email.value.match(
       /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/gi
     );
@@ -23,20 +42,19 @@ const addListeners = () => {
     if (emailValidation) {
       $checkOK.src = "/ok.svg";
       isValid.email = true;
+      $email.style.border = "0px solid lightgrey";
+      $email.style["border-bottom-width"] = "0.1rem";
+      $error.innerText = "";
     } else {
       $checkOK.src = "/notok.svg";
       isValid.email = false;
+
+      $error.innerText = "올바른 이메일을 입력해야 합니다.";
+      $email.style.border = "0px solid red";
+      $email.style["border-bottom-width"] = "0.1rem";
     }
 
-    if (isComplete()) activateNextButton();
-    else deactivateNextButton();
-
-    if (!isEmailBtnPushed) {
-      $joinForm.appendChild(createInputGroup("닉네임", "nickname", "text", "", "change", handleNickname));
-      $joinForm.appendChild(createInputGroup("비밀번호", "password", "password", "", "change", handlePassword));
-      $joinForm.appendChild(createInputGroup("생년월일", "birth", "text", "2000.01.01", "keyup", handleBirth));
-    }
-    isEmailBtnPushed = true;
+    return emailValidation;
   };
 
   // 닉네임 listener
@@ -166,6 +184,7 @@ const addListeners = () => {
     window.history.back();
   };
 
+  $email.addEventListener("keyup", handleEmailInput);
   $emailCheckBtn.addEventListener("click", checkEmailDuplicated);
   $emailDelBtn.addEventListener("click", deleteEmailInput);
   $backBtn.addEventListener("click", handleBack);
