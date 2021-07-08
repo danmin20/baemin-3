@@ -13,9 +13,28 @@ const addListeners = () => {
   const $backBtn = document.querySelector(".header-btn");
   const $joinForm = document.querySelector("#join-form");
 
+  const handleEmailInput = ({ target }) => {
+    checkEmail();
+  };
+
   // 메일 중복 확인 버튼
   const checkEmailDuplicated = (e) => {
+    const emailValidation = checkEmail();
+
+    if (isComplete()) activateNextButton();
+    else deactivateNextButton();
+
+    if (!isEmailBtnPushed && emailValidation) {
+      $joinForm.appendChild(createInputGroup("닉네임", "nickname", "text", "", "keyup", handleNickname));
+      $joinForm.appendChild(createInputGroup("비밀번호", "password", "password", "", "keyup", handlePassword));
+      $joinForm.appendChild(createInputGroup("생년월일", "birth", "text", "2000.01.01", "keyup", handleBirth));
+      isEmailBtnPushed = true;
+    }
+  };
+
+  const checkEmail = () => {
     const $checkOK = $emailCheckBtn.previousElementSibling.querySelector(".check-ok");
+    const $error = $email.parentNode.querySelector(".error");
     const emailValidation = $email.value.match(
       /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/gi
     );
@@ -23,20 +42,19 @@ const addListeners = () => {
     if (emailValidation) {
       $checkOK.src = "/ok.svg";
       isValid.email = true;
+      $email.style.border = "0px solid lightgrey";
+      $email.style["border-bottom-width"] = "0.1rem";
+      $error.innerText = "";
     } else {
       $checkOK.src = "/notok.svg";
       isValid.email = false;
+
+      $error.innerText = "올바른 이메일을 입력해야 합니다.";
+      $email.style.border = "0px solid red";
+      $email.style["border-bottom-width"] = "0.1rem";
     }
 
-    if (isComplete()) activateNextButton();
-    else deactivateNextButton();
-
-    if (!isEmailBtnPushed) {
-      $joinForm.appendChild(createInputGroup("닉네임", "nickname", "text", "", "change", handleNickname));
-      $joinForm.appendChild(createInputGroup("비밀번호", "password", "password", "", "change", handlePassword));
-      $joinForm.appendChild(createInputGroup("생년월일", "birth", "text", "2000.01.01", "keyup", handleBirth));
-    }
-    isEmailBtnPushed = true;
+    return emailValidation;
   };
 
   // 닉네임 listener
@@ -114,10 +132,15 @@ const addListeners = () => {
   // 생년월일 input listner
   const handleBirth = ({ target }) => {
     const value = target.value.replace(/\./g, "");
+    const birthText = {
+      year: Number(value.slice(0, 4)),
+      month: value.slice(4, 6) || value.slice(4, 5) || undefined,
+      date: value.slice(6, 8) || value.slice(6, 7) || undefined,
+    };
     const birth = {
-      year: Number(value.slice(0, 4)) || 0,
-      month: Number(value.slice(4, 6)) || 0,
-      date: Number(value.slice(6, 8)) || 0,
+      year: Number(birthText.year),
+      month: Number(birthText.month),
+      date: Number(birthText.date),
     };
     const validDate = Date.parse(`${birth.year}-${birth.month}-${birth.date}`);
     if (value.length > 10) {
@@ -126,14 +149,12 @@ const addListeners = () => {
     }
 
     // 생년월일에 점 넣기
-    if (birth.date !== 0) target.value = `${birth.year}.${birth.month}.${birth.date}`;
-    else if (birth.month !== 0) target.value = `${birth.year}.${birth.month}.`;
-    else if (birth.year > 1000) target.value = `${birth.year}.`;
-
+    if (birthText.date) target.value = `${birth.year}.${birthText.month}.${birthText.date}`;
+    else if (birthText.month) target.value = `${birth.year}.${birthText.month}.`;
     // 생년월일에 점 빼기
-    if (birth.month === 0 && target.value[target.value.length - 1] === ".") target.value = birth.year;
-    else if (birth.date === 0 && target.value[target.value.length - 1] === ".")
-      target.value = `${birth.year}.${birth.month}`;
+    if (!birthText.month && target.value[target.value.length - 1] === ".") target.value = birth.year;
+    else if (!birthText.date && target.value[target.value.length - 1] === ".")
+      target.value = `${birth.year}.${birthText.month}`;
 
     const $birth = document.querySelector("#birth");
     const $descText = $birth.parentNode.querySelector(".error");
@@ -141,7 +162,7 @@ const addListeners = () => {
 
     $checkOK.src = "/notok.svg";
     isValid.birth = false;
-    if (!validDate) {
+    if (!validDate && value.length !== 10) {
       $birth.style.border = "0px solid red";
       $birth.style["border-bottom-width"] = "0.1rem";
       $descText.innerText = "올바른 생년월일을 입력해야 합니다.";
@@ -166,6 +187,7 @@ const addListeners = () => {
     window.history.back();
   };
 
+  $email.addEventListener("keyup", handleEmailInput);
   $emailCheckBtn.addEventListener("click", checkEmailDuplicated);
   $emailDelBtn.addEventListener("click", deleteEmailInput);
   $backBtn.addEventListener("click", handleBack);
@@ -182,6 +204,9 @@ const createInputGroup = (labelText, inputId, inputType, placeholder, eventName,
   input.name = inputId;
   input.type = inputType;
   input.placeholder = placeholder;
+  if (labelText === "생년월일") {
+    input.maxLength = 10;
+  }
 
   const img = document.createElement("img");
   img.className = "check-ok";

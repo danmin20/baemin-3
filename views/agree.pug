@@ -7,7 +7,7 @@ block content
     .title 어서오세요
     .title 약관동의가 필요해요
     form#agree-form(action='/agree' method='POST' style="height: 100%; position: relative")
-      div.check-group(style="margin-top: 3rem")
+      .check-group(style="margin-top: 3rem")
         input#all-agree.checkbox(type='checkbox' name="all-agree")
         img.check(src="/check.svg")
         label(for="all-agree") 전체동의

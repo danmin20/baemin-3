@@ -4,9 +4,9 @@ module.exports = (sequelize, DataTypes) =>
     {
       id: {
         type: DataTypes.STRING(40),
-        allowNull: false,
         unique: true,
         primaryKey: true,
+        allowNull: false,
       },
       nickname: {
         type: DataTypes.STRING(15),
@@ -14,12 +14,11 @@ module.exports = (sequelize, DataTypes) =>
       },
       password: {
         type: DataTypes.STRING(100),
-        allowNull: true,
+        allowNull: false,
       },
       birth: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING(10),
         allowNull: false,
-        defaultValue: 0,
       },
     },
     {

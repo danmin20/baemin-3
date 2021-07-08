@@ -11,7 +11,8 @@ block content
         div(style='display:flex')
           div(style='position:relative; flex:1;')
             input#email.text-input(type="email" name="id" placeholder="example@example.com")
-            img#email-del(src="/지우기.png" style="width: 1.5rem; position: absolute; right: 3rem; bottom: 1rem;")
+            div#error-id.error
+            img#email-del(src="/지우기.png" style="cursor: pointer; width: 1.5rem; position: absolute; right: 3rem; bottom: 1rem;")
             img.check-ok(src="/notok.svg")
           input#email-check-btn(type="button" value="중복확인")
 

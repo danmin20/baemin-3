@@ -1,0 +1,15 @@
+#email-check-btn {
+    cursor: pointer;
+    background-color: white;
+    border: 0.1rem solid lightgray;
+    border-radius: 3px;
+    margin-left: 1.5rem;
+    background: #fff;
+    color: #000;
+    
+    &:disabled {
+      background-color: white;
+      border: 0.1rem solid lightgray;
+      color: lightgray;
+    }
+  }

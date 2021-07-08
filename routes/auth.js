@@ -15,7 +15,7 @@ router.post("/signup", async (req, res, next) => {
     if (exNick) {
       res.redirect("/signup");
     }
-    const hash = await bcrypt.hash(password, 12);
+    const hash = await bcrypt.hash(password, 10);
     await User.create({
       id,
       nickname,

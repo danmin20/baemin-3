@@ -7,6 +7,8 @@ const addListeners = () => {
 
   // 인증번호 입력폼
   const $authNum = document.createElement("input");
+  $authNum.id = "auth-num";
+  $authNum.className = "text-input";
   const $regenerateBtn = document.createElement("button");
   $regenerateBtn.innerText = "인증번호 다시받기";
   $regenerateBtn.type = "button";
@@ -28,6 +30,19 @@ const addListeners = () => {
       } else {
         e.target.value = e.target.value.slice(0, 8) + "-" + e.target.value.slice(8, 10);
       }
+    }
+
+    const $error = document.getElementById("error-message");
+    if (e.target.value.length === 13) {
+      $check.src = "/ok.svg";
+      $error.innerText = "";
+      $authNumBtn.disabled = false;
+      $phoneNum.className = "text-input";
+    } else {
+      $check.src = "/notok.svg";
+      $error.innerText = "올바른 전화번호를 입력해주세요";
+      $authNumBtn.disabled = true;
+      $phoneNum.className = "text-input error-input";
     }
   };
   $phoneNum.addEventListener("input", handlePhoneNumInput);
@@ -68,6 +83,7 @@ const addListeners = () => {
       document.getElementById("join-form").removeChild($authNumBtn);
       $authNum.autofocus = true;
       const label = document.createElement("label");
+      label.setAttribute("for", "auth-num");
       label.innerText = "인증번호";
       $authNum.className = "text-input";
       $authNum.placeholder = "인증번호를 입력해주세요";
