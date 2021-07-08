@@ -2,3 +2,4 @@ node_modules
 db
 sessions
 .env
+dist
