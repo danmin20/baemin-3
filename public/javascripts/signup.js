@@ -171,7 +171,11 @@ const addListeners = () => {
 
   // 이메일 입력창 지우기
   const deleteEmailInput = (e) => {
+    const $checkOK = $emailCheckBtn.previousElementSibling.querySelector(".check-ok");
     $email.value = "";
+    isValid.email = false;
+    $checkOK.src = "/notok.svg";
+    deactivateNextButton();
   };
 
   // 뒤로 가기 버튼
