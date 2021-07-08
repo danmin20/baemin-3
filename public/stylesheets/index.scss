@@ -1,13 +1,15 @@
-@import url("reset.css");
-@import url("main.css");
-@import url("login.css");
-@import url("agree.css");
-@import url("signup.css");
+@import "reset";
+@import "main";
+@import "login";
+@import "agree";
+@import "signup";
 
 html,
 body {
     height: 100%;
     font-size: 10px;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 header {
     font-size: 1.5rem;

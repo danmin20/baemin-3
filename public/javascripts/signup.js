@@ -42,16 +42,13 @@ const addListeners = () => {
     if (emailValidation) {
       $checkOK.src = "/ok.svg";
       isValid.email = true;
-      $email.style.border = "0px solid lightgrey";
-      $email.style["border-bottom-width"] = "0.1rem";
+      $email.className = "text-input";
       $error.innerText = "";
     } else {
       $checkOK.src = "/notok.svg";
       isValid.email = false;
-
       $error.innerText = "올바른 이메일을 입력해야 합니다.";
-      $email.style.border = "0px solid red";
-      $email.style["border-bottom-width"] = "0.1rem";
+      $email.className = "text-input error-input";
     }
 
     return emailValidation;
@@ -103,8 +100,7 @@ const addListeners = () => {
     isValid.password = false;
     deactivateNextButton();
     if (value.match(/(\w)\1\1/) || isContinuousPwd(target)) {
-      $password.style.border = "0px solid red";
-      $password.style["border-bottom-width"] = "0.1rem";
+      $password.className = "text-input error-input";
       $descText.innerText = "같은 숫자 혹은 연속된 숫자를 3개 이상 입력할 수 없습니다.";
     } else if (
       // 길이가 10이 안되거나 소문자, 대문자, 특수문자 중 2개 이상이 없을 경우
@@ -116,12 +112,10 @@ const addListeners = () => {
       )
     ) {
       $descText.innerText = "10자 이상 영어 대문자, 소문자, 특수문자 중 2종류를 조합해야 합니다.";
-      $password.style.border = "0px solid red";
-      $password.style["border-bottom-width"] = "0.1rem";
+      $password.className = "text-input error-input";
     } else {
       // password validation pass
-      $password.style.border = "0px solid lightgrey";
-      $password.style["border-bottom-width"] = "0.1rem";
+      $password.className = "text-input";
       $descText.innerText = "";
       $checkOK.src = "/ok.svg";
       isValid.password = true;
@@ -163,13 +157,11 @@ const addListeners = () => {
     $checkOK.src = "/notok.svg";
     isValid.birth = false;
     if (!validDate && value.length !== 10) {
-      $birth.style.border = "0px solid red";
-      $birth.style["border-bottom-width"] = "0.1rem";
+      $birth.className = "text-input error-input";
       $descText.innerText = "올바른 생년월일을 입력해야 합니다.";
       deactivateNextButton();
     } else {
-      $birth.style.border = "0px solid lightgrey";
-      $birth.style["border-bottom-width"] = "0.1rem";
+      $birth.className = "text-input";
       $descText.innerText = "";
       $checkOK.src = "/ok.svg";
       isValid.birth = true;
