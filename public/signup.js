@@ -132,10 +132,15 @@ const addListeners = () => {
   // 생년월일 input listner
   const handleBirth = ({ target }) => {
     const value = target.value.replace(/\./g, "");
+    const birthText = {
+      year: Number(value.slice(0, 4)),
+      month: value.slice(4, 6) || value.slice(4, 5) || undefined,
+      date: value.slice(6, 8) || value.slice(6, 7) || undefined,
+    };
     const birth = {
-      year: Number(value.slice(0, 4)) || 0,
-      month: Number(value.slice(4, 6)) || 0,
-      date: Number(value.slice(6, 8)) || 0,
+      year: Number(birthText.year),
+      month: Number(birthText.month),
+      date: Number(birthText.date),
     };
     const validDate = Date.parse(`${birth.year}-${birth.month}-${birth.date}`);
     if (value.length > 10) {
@@ -143,15 +148,15 @@ const addListeners = () => {
       return;
     }
 
-    // 생년월일에 점 넣기
-    if (birth.date !== 0) target.value = `${birth.year}.${birth.month}.${birth.date}`;
-    else if (birth.month !== 0) target.value = `${birth.year}.${birth.month}.`;
-    else if (birth.year > 1000) target.value = `${birth.year}.`;
+    console.log(birth, birthText);
 
+    // 생년월일에 점 넣기
+    if (birthText.date) target.value = `${birth.year}.${birthText.month}.${birthText.date}`;
+    else if (birthText.month) target.value = `${birth.year}.${birthText.month}.`;
     // 생년월일에 점 빼기
-    if (birth.month === 0 && target.value[target.value.length - 1] === ".") target.value = birth.year;
-    else if (birth.date === 0 && target.value[target.value.length - 1] === ".")
-      target.value = `${birth.year}.${birth.month}`;
+    if (!birthText.month && target.value[target.value.length - 1] === ".") target.value = birth.year;
+    else if (!birthText.date && target.value[target.value.length - 1] === ".")
+      target.value = `${birth.year}.${birthText.month}`;
 
     const $birth = document.querySelector("#birth");
     const $descText = $birth.parentNode.querySelector(".error");
@@ -159,7 +164,7 @@ const addListeners = () => {
 
     $checkOK.src = "/notok.svg";
     isValid.birth = false;
-    if (!validDate) {
+    if (!validDate && value.length !== 10) {
       $birth.style.border = "0px solid red";
       $birth.style["border-bottom-width"] = "0.1rem";
       $descText.innerText = "올바른 생년월일을 입력해야 합니다.";
