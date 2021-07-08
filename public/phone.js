@@ -29,6 +29,17 @@ const addListeners = () => {
         e.target.value = e.target.value.slice(0, 8) + "-" + e.target.value.slice(8, 10);
       }
     }
+
+    const $error = document.getElementById("error-message");
+    if (e.target.value.length === 13) {
+      $check.src = "/ok.svg";
+      $error.innerText = "";
+      $authNumBtn.disabled = false;
+    } else {
+      $check.src = "/notok.svg";
+      $error.innerText = "올바른 전화번호를 입력해주세요";
+      $authNumBtn.disabled = true;
+    }
   };
   $phoneNum.addEventListener("input", handlePhoneNumInput);
 

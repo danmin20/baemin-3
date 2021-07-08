@@ -148,8 +148,6 @@ const addListeners = () => {
       return;
     }
 
-    console.log(birth, birthText);
-
     // 생년월일에 점 넣기
     if (birthText.date) target.value = `${birth.year}.${birthText.month}.${birthText.date}`;
     else if (birthText.month) target.value = `${birth.year}.${birthText.month}.`;
@@ -206,6 +204,9 @@ const createInputGroup = (labelText, inputId, inputType, placeholder, eventName,
   input.name = inputId;
   input.type = inputType;
   input.placeholder = placeholder;
+  if (labelText === "생년월일") {
+    input.maxLength = 10;
+  }
 
   const img = document.createElement("img");
   img.className = "check-ok";

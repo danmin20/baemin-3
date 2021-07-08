@@ -7,10 +7,11 @@ block content
     form#join-form(action='/phone' method='POST' style="height: 100%; position: relative")
       div.input-group(style="position: relative")
         label(for="phone-number") 휴대전화
-        input#phone-number.text-input(type="tel" name="phone-number")
-        img#phone-number-del(src="/지우기.png" style="width: 1.5rem; position: absolute; right: 3rem; bottom: 1rem;")
+        input#phone-number.text-input(type="tel" name="phone-number" maxlength=13)
+        div#error-message.error
+        img#phone-number-del(src="/지우기.png" style="cursor: pointer; width: 1.5rem; position: absolute; right: 3rem; bottom: 1rem;")
         img#phone-number-ok(src="/notok.svg" style="width: 1.2rem; position: absolute; right: 0.5rem; bottom: 1.2rem;")
-      button#auth-num-btn.submit-btn(type="button" style="background: #fff; border: 0.1rem solid lightgray; color: #000; margin-top: 3rem;") 인증번호 받기
+      button#auth-num-btn.submit-btn(type="button" disabled style="background: #fff; border: 0.1rem solid lightgray; color: #000; margin-top: 3rem;") 인증번호 받기
 
       div#auth-num-group(style="margin-top: 3rem;")
 

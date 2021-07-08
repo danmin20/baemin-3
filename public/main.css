@@ -30,6 +30,7 @@ button {
   border: none;
 }
 label {
+  cursor: pointer;
   margin-left: 0.5rem;
   font-size: 1.3rem;
 }
@@ -61,15 +62,18 @@ label {
 }
 
 .next-btn {
+  cursor: pointer;
   position: fixed;
   top: 2rem;
   right: 2rem;
 }
 .next-btn:disabled {
+  cursor: default;
   color: lightgray;
 }
 
 .submit-btn {
+  cursor: pointer;
   background-color: #23b9b4;
   width: 100%;
   color: #fff;
@@ -79,9 +83,11 @@ label {
   font-weight: 500;
 }
 .submit-btn:disabled {
+  cursor: default;
   background: #e2e2e2;
 }
 .link-btn {
+  cursor: pointer;
   color: #23b9b4;
 }
 .input-group {
@@ -125,6 +131,7 @@ label {
 }
 
 .main-button {
+  cursor: pointer;
   width: 100%;
   display: flex;
   align-items: center;
@@ -230,6 +237,7 @@ label {
 }
 
 #email-check-btn {
+  cursor: pointer;
   background-color: white;
   border: 0.1rem solid lightgray;
   border-radius: 3px;
