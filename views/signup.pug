@@ -1,19 +1,17 @@
 extends layout
 
 block content
-  div.content(style="height: 100%; padding-top: 2.5rem;")
-    header 
-      div(style='display:flex; justify-content: space-between;')
-        a(style='') <
-        div(style='') 회원가입
-    form#join-form(action='/auth/signup' method='POST' style="height: 100%; position: relative")
-      button#complete-button.next-button(type="submit" disabled) 완료
+  header(style="position: fixed; top: 0; left: 0;") 회원가입
+    img#back.header-btn(style="width: 1.5rem; height: 1.5rem;" src="/뒤로가기.png")
+  div.content(style="height: 100%;")
+    form#join-form(action="/auth/signup" method="post" style="height: 100%; position: relative")
+      button#complete-button.next-btn(type="submit" disabled) 완료
       div.input-group
         label(for="email") 이메일
         div(style='display:flex')
           div(style='position:relative; flex:1;')
-            input#email.text-input(type="email" name="id")
-            img#email-del(src="/delete.svg" style="position: absolute; right: 3rem; bottom: 0.5rem;")
+            input#email.text-input(type="email" name="id" placeholder="example@example.com")
+            img#email-del(src="/지우기.png" style="width: 1.5rem; position: absolute; right: 3rem; bottom: 1rem;")
             img.check-ok(src="/notok.svg")
           input#email-check-btn(type="button" value="중복확인")
 

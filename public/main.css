@@ -136,10 +136,10 @@ label {
   border: 0 solid #eee;
   border-top-width: 0.1rem;
 }
-.main-button:last-child{
+.main-button:last-child {
   border-bottom-width: 0.1rem;
 }
-.main-button span{
+.main-button span {
   color: #aaa;
   font-size: 1.7rem;
   margin-left: 1rem;
@@ -153,7 +153,7 @@ label {
 
 .menus {
   display: grid;
-  grid-template-columns: repeat(3,1fr);
+  grid-template-columns: repeat(3, 1fr);
   width: 100%;
   height: 15rem;
 }
@@ -221,8 +221,6 @@ label {
   background-color: white;
   border: 0px solid white;
   color: #23b9b4;
-  position: relative;
-  top: 0;
 }
 
 #complete-button:disabled {
@@ -234,7 +232,6 @@ label {
 #email-check-btn {
   background-color: white;
   border: 0.1rem solid lightgray;
-  padding: 0.5rem 0.7rem;
   border-radius: 3px;
   margin-left: 1.5rem;
   background: #fff;
@@ -249,7 +246,8 @@ label {
 .check-ok {
   position: absolute;
   right: 0.5rem;
-  bottom: 0.5rem;
+  width: 1.2rem;
+  bottom: 1.2rem;
 }
 
 .desc-text {

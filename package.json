@@ -6,7 +6,8 @@
   "author": "Lee Jeong Min <danmin20@khu.ac.kr>",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon app"
+    "start": "node app",
+    "start:dev": "nodemon app"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
