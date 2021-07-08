@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  .content#main(style='padding: 0;')
+  .content(style='padding: 0; background-color: #f6f6f6')
     header My배민
     img(src="/배너.png" style="width: 100%;")
     if !user
@@ -37,13 +37,11 @@ block content
       .menu
         img(src="/리뷰관리.png")
         span 리뷰관리
-    .divider 
-    .main-button(style="padding: 2rem 1.5rem")
+    .main-button(style="padding: 2rem 1.5rem; margin: 1rem 0;")
       div(style="display: flex; align-items: center")
         img(src="/일회용품.png" style="width: 2.5rem")
         div(style='color: rgb(142, 193, 123); font-weight: 600; margin-left: 0.5rem') 일회용품 덜 쓰기, 함께해요!
       img(src="/화살표.png" style="width: 0.8rem")
-    .divider 
     .main-button(style="padding: 2rem 1.5rem")  
       div 배민페이 등록
         .sub 배민페이로 결제하면 최대 5.5% 배민포인트가 적립됩니다!

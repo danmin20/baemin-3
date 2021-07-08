@@ -1,0 +1,106 @@
+@import url("reset.css");
+@import url("main.css");
+@import url("login.css");
+@import url("agree.css");
+@import url("signup.css");
+html,
+body {
+  height: 100%;
+  font-size: 10px; }
+
+header {
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 2rem 0;
+  width: 100%;
+  text-align: center;
+  position: relative; }
+
+form {
+  width: 100%; }
+
+input {
+  border: 0 solid lightgray;
+  border-bottom-width: 0.1rem; }
+  input:hover, input:active, input:focus {
+    outline: 0;
+    outline: none; }
+
+button {
+  background: none;
+  border: none; }
+
+label {
+  cursor: pointer;
+  margin-left: 0.5rem;
+  font-size: 1.3rem; }
+
+.content {
+  padding: 2.5rem;
+  padding-top: 10rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%; }
+
+.header-btn {
+  cursor: pointer;
+  position: absolute;
+  left: 2rem;
+  width: 1.5rem;
+  height: 1.5rem; }
+
+.next-btn {
+  cursor: pointer;
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  color: #23b9b4; }
+  .next-btn:disabled {
+    cursor: default;
+    color: lightgray; }
+
+.submit-btn {
+  cursor: pointer;
+  background-color: #23b9b4;
+  width: 100%;
+  color: #fff;
+  padding: 1.2rem;
+  border-radius: 0.3rem;
+  font-size: 1.4rem;
+  font-weight: 500; }
+  .submit-btn:disabled {
+    cursor: default;
+    background: #e2e2e2; }
+
+.link-btn {
+  cursor: pointer;
+  color: #23b9b4; }
+
+.input-group {
+  margin-top: 2rem;
+  position: relative; }
+  .input-group .text-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.8rem 0.5rem;
+    margin: 0.3rem 0; }
+  .input-group .error-input {
+    border: 0 solid red;
+    border-bottom-width: 0.1rem; }
+  .input-group .error {
+    color: red;
+    position: absolute;
+    margin-left: 0.5rem; }
+
+.line {
+  width: 100%;
+  border: 0 solid lightgray;
+  border-bottom-width: 0.1rem; }
+
+.check-ok {
+  position: absolute;
+  right: 0.5rem;
+  width: 1.2rem;
+  bottom: 1.2rem; }

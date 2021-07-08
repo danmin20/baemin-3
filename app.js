@@ -16,11 +16,12 @@ sequelize.sync();
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
-app.set("port", 3000);
+app.set("port", process.env.PORT || 3000);
 
 app.use(morgan("dev"));
-app.use(express.static(path.join(__dirname, "public")));
-app.use(express.static(path.join(__dirname, "assets")));
+app.use(express.static(path.join(__dirname, "public/images")));
+app.use(express.static(path.join(__dirname, "public/javascripts")));
+app.use(express.static(path.join(__dirname, "dist")));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

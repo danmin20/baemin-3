@@ -6,7 +6,9 @@
   "author": "Lee Jeong Min <danmin20@khu.ac.kr>",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon app"
+    "start": "node app",
+    "start:dev": "nodemon app",
+    "build-css": "node-sass --include-path node_modules public/stylesheets --output dist"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
