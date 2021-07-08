@@ -25,8 +25,8 @@ const addListeners = () => {
     else deactivateNextButton();
 
     if (!isEmailBtnPushed && emailValidation) {
-      $joinForm.appendChild(createInputGroup("닉네임", "nickname", "text", "", "change", handleNickname));
-      $joinForm.appendChild(createInputGroup("비밀번호", "password", "password", "", "change", handlePassword));
+      $joinForm.appendChild(createInputGroup("닉네임", "nickname", "text", "", "keyup", handleNickname));
+      $joinForm.appendChild(createInputGroup("비밀번호", "password", "password", "", "keyup", handlePassword));
       $joinForm.appendChild(createInputGroup("생년월일", "birth", "text", "2000.01.01", "keyup", handleBirth));
       isEmailBtnPushed = true;
     }
