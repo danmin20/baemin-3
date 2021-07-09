@@ -52,7 +52,7 @@ router.post("/login", async (req, res, next) => {
       res.redirect("/login");
     }
 
-    req.session.userId = user.email;
+    req.session.userId = user.id;
     req.session.save((err) => {
       if (err) return next(err);
       res.redirect("/");
