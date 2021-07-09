@@ -37,7 +37,7 @@ app.use(
     secret: process.env.COOKIE_SECRET,
     cookie: {
       httpOnly: false,
-      secure: true,
+      secure: false,
     },
     store: new FileStore(),
   })
