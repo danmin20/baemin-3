@@ -22,13 +22,14 @@
 
 
 ## wiki
-- [heroku-배포와-GitHub-action](https://github.com/woowa-techcamp-2021/baemin-3/wiki/heroku-배포와-GitHub-action)
-- [SCSS-적용](https://github.com/woowa-techcamp-2021/baemin-3/wiki/SCSS-적용)
+- [heroku 배포와 GitHub action](https://github.com/woowa-techcamp-2021/baemin-3/wiki/heroku-배포와-GitHub-action)
+- [SCSS 적용](https://github.com/woowa-techcamp-2021/baemin-3/wiki/SCSS-적용)
 - [데이터베이스](https://github.com/woowa-techcamp-2021/baemin-3/wiki/데이터베이스)
 - [암호화](https://github.com/woowa-techcamp-2021/baemin-3/wiki/암호화)
 - [쿠키와 세션](https://github.com/woowa-techcamp-2021/baemin-3/wiki/쿠키와-세션)
 - [이메일 중복 체크 api](https://github.com/woowa-techcamp-2021/baemin-3/wiki/이메일-중복-체크-api)
 - [인증방식](https://github.com/woowa-techcamp-2021/baemin-3/wiki/인증방식)
+- [사용자 입력폼 validation](https://github.com/woowa-techcamp-2021/baemin-3/wiki/사용자-입력폼-validation)
 
 
 
