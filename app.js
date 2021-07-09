@@ -19,11 +19,14 @@ app.set("view engine", "pug");
 app.set("port", process.env.PORT || 3000);
 
 app.use(morgan("dev"));
+
+app.use(express.json());
+
+app.use("/api/auth", require("./api/auth"));
 app.use(express.static(path.join(__dirname, "public/images")));
 app.use(express.static(path.join(__dirname, "public/javascripts")));
 app.use(express.static(path.join(__dirname, "dist")));
 
-app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
 
@@ -34,7 +37,7 @@ app.use(
     secret: process.env.COOKIE_SECRET,
     cookie: {
       httpOnly: true,
-      secure: false,
+      secure: true,
     },
     store: new FileStore(),
   })

@@ -13,18 +13,44 @@ const addListeners = () => {
   const $backBtn = document.querySelector(".header-btn");
   const $joinForm = document.querySelector("#join-form");
 
-  const handleEmailInput = ({ target }) => {
+  const $checkOK = $emailCheckBtn.previousElementSibling.querySelector(".check-ok");
+  const $error = $email.parentNode.querySelector(".error");
+
+  const handleEmailInput = () => {
     checkEmail();
   };
 
   // 메일 중복 확인 버튼
-  const checkEmailDuplicated = (e) => {
+  const checkEmailDuplicated = async () => {
     const emailValidation = checkEmail();
+
+    const { status } = await fetch("/api/auth/check", {
+      method: "POST",
+      body: JSON.stringify({
+        email: $email.value,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (status === 200) {
+      $checkOK.src = "/ok.svg";
+      isValid.email = true;
+      $email.className = "text-input";
+      $error.innerText = "사용 가능한 계정입니다.";
+      $error.style.color = "#23b9b4";
+    } else {
+      $checkOK.src = "/notok.svg";
+      isValid.email = false;
+      $error.innerText = "이미 존재하는 계정입니다.";
+      $email.className = "text-input error-input";
+      $error.style.color = "red";
+    }
 
     if (isComplete()) activateNextButton();
     else deactivateNextButton();
 
-    if (!isEmailBtnPushed && emailValidation) {
+    if (!isEmailBtnPushed && emailValidation && status === 200) {
       $joinForm.appendChild(createInputGroup("닉네임", "nickname", "text", "", "keyup", handleNickname));
       $joinForm.appendChild(createInputGroup("비밀번호", "password", "password", "", "keyup", handlePassword));
       $joinForm.appendChild(createInputGroup("생년월일", "birth", "text", "2000.01.01", "keyup", handleBirth));
@@ -33,8 +59,6 @@ const addListeners = () => {
   };
 
   const checkEmail = () => {
-    const $checkOK = $emailCheckBtn.previousElementSibling.querySelector(".check-ok");
-    const $error = $email.parentNode.querySelector(".error");
     const emailValidation = $email.value.match(
       /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/gi
     );
@@ -49,6 +73,7 @@ const addListeners = () => {
       isValid.email = false;
       $error.innerText = "올바른 이메일을 입력해야 합니다.";
       $email.className = "text-input error-input";
+      $error.style.color = "red";
     }
 
     return emailValidation;

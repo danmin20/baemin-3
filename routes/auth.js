@@ -5,19 +5,28 @@ const { User } = require("../models");
 const router = express.Router();
 
 router.post("/signup", async (req, res, next) => {
-  const { id, nickname, password, birth } = req.body;
+  const { email, nickname, password, birth } = req.body;
   try {
-    const exUser = await User.findOne({ where: { id } });
-    const exNick = await User.findOne({ where: { nickname } });
-    if (exUser) {
-      res.redirect("/signup");
-    }
-    if (exNick) {
-      res.redirect("/signup");
-    }
     const hash = await bcrypt.hash(password, 10);
     await User.create({
-      id,
+      email,
+      nickname,
+      password: hash,
+      birth,
+    });
+    res.redirect("/login");
+  } catch (error) {
+    console.error(error);
+    return next(error);
+  }
+});
+
+router.post("/signup", async (req, res, next) => {
+  const { email, nickname, password, birth } = req.body;
+  try {
+    const hash = await bcrypt.hash(password, 10);
+    await User.create({
+      email,
       nickname,
       password: hash,
       birth,
@@ -30,10 +39,10 @@ router.post("/signup", async (req, res, next) => {
 });
 
 router.post("/login", async (req, res, next) => {
-  const { id, password } = req.body;
+  const { email, password } = req.body;
   try {
     // 유저 확인
-    const user = await User.findOne({ where: { id } });
+    const user = await User.findOne({ where: { email } });
     if (!user) {
       res.redirect("/login");
     }
@@ -43,7 +52,7 @@ router.post("/login", async (req, res, next) => {
       res.redirect("/login");
     }
 
-    req.session.userId = user.id;
+    req.session.userId = user.email;
     req.session.save((err) => {
       if (err) return next(err);
       res.redirect("/");

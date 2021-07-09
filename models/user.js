@@ -2,10 +2,9 @@ module.exports = (sequelize, DataTypes) =>
   sequelize.define(
     "user",
     {
-      id: {
+      email: {
         type: DataTypes.STRING(40),
         unique: true,
-        primaryKey: true,
         allowNull: false,
       },
       nickname: {
@@ -24,5 +23,13 @@ module.exports = (sequelize, DataTypes) =>
     {
       timestamps: true,
       paranoid: true,
+    },
+    {
+      indexes: [
+        {
+          unique: true,
+          fields: ["email"],
+        },
+      ],
     }
   );
