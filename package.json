@@ -8,7 +8,7 @@
   "scripts": {
     "start": "node app",
     "start:dev": "nodemon app",
-    "build-css": "node-sass --include-path node_modules public/stylesheets --output dist"
+    "build": "node-sass --include-path node_modules public/stylesheets/index.scss --output dist"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
