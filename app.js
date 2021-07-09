@@ -12,7 +12,7 @@ const { sequelize } = require("./models");
 const FileStore = require("session-file-store")(session);
 
 const app = express();
-sequelize.sync();
+sequelize.sync({ force: true });
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
